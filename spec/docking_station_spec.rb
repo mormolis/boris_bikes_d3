@@ -38,7 +38,7 @@ describe DockingStation do
     end
 
     it "raises an exception when you try to dock more bikes than the capacity of docking station" do
-      20.times{subject.dock(Bike.new)}
+      DockingStation::DEFAULT_CAPACITY.times{subject.dock(Bike.new)}
       expect{subject.dock(Bike.new)}.to raise_error("Docking Station is full")
     end
   end

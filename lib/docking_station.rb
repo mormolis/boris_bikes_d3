@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + "/bike"
 
 class DockingStation
   attr_reader :bikes
+  DEFAULT_CAPACITY = 20
 
   def initialize
     @bikes = []
@@ -19,9 +20,9 @@ class DockingStation
     # bike
   end
 
-  private 
+  private
   def full?
-   @bikes.count >=20  
+   @bikes.count >= DEFAULT_CAPACITY
   end
 
   def empty?
