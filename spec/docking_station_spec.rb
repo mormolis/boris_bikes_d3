@@ -10,16 +10,13 @@ describe DockingStation do
 
     context "release_bike returns object of type Bike"
       it 'returns object of type Bike' do
+        subject.dock_bike(Bike.new)
         expect(subject.release_bike).to be_instance_of Bike
       end
-
-
-
   end
 
   describe "#dock_bike" do
-    ds = DockingStation.new
-    bike = Bike.new
+  
 
     it "receives a bike instance and docks it" do
       expect(subject).to respond_to :dock_bike
@@ -30,19 +27,17 @@ describe DockingStation do
     end
 
     it "the dock_bike method should return the bikes array if successful" do
-      expect(ds.dock_bike(bike)).to be_instance_of Array
+      expect(subject.dock_bike(Bike.new)).to be_instance_of Bike
     end
 
-    it "the dock_bike method should have populated the bikes array" do
-      expect(ds.bikes.count).to eq(1)
+    it "raises an error when the docking station is empty" do
+      expect(subject.release_bike).to raise_error("There are no bikes docked")
     end
+
   end
 
-  describe ".bikes" do
-    it "returns an array with all the docked bikes" do
-      expect(subject.bikes).to be_instance_of Array
-    end
-  end
+
+ 
 
 
 end
