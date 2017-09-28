@@ -2,7 +2,7 @@
 require File.dirname(__FILE__) + "/bike"
 
 class DockingStation
-  attr_reader :bikes, :capacity
+  attr_accessor :capacity
 
   DEFAULT_CAPACITY = 20
 
@@ -13,21 +13,24 @@ class DockingStation
 
   def release_bike
     raise ("There are no bikes docked") if empty?
-    @bikes.pop
+    bikes.pop
   end
 
   def dock(bike)
     fail ("Docking Station is full") if full?
-    @bikes << bike
+    bikes << bike
     # bike
   end
 
   private
+
+  attr_reader :bikes
+
   def full?
-   @bikes.count >= @capacity
+   bikes.count >= capacity
   end
 
   def empty?
-     @bikes.empty? #@bikes==[]
+     bikes.empty? #@bikes==[]
   end
 end
