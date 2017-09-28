@@ -13,6 +13,10 @@ describe DockingStation do
         subject.dock_bike(Bike.new)
         expect(subject.release_bike).to be_instance_of Bike
       end
+
+      it "raises an error when the docking station is empty" do
+        expect{subject.release_bike}.to raise_error("There are no bikes docked")
+      end
   end
 
   describe "#dock_bike" do
@@ -30,13 +34,16 @@ describe DockingStation do
       expect(subject.dock_bike(Bike.new)).to be_instance_of Bike
     end
 
-    it "raises an error when the docking station is empty" do
-      expect(subject.release_bike).to raise_error("There are no bikes docked")
+    it "raises an exception when you try to dock more bikes than the capacity of docking station" do
+      subject.dock_bike(Bike.new)
+      expect{subject.dock_bike(Bike.new)}.to raise_error("Docking Station is full")
     end
+
+   
 
   end
 
-
+ 
  
 
 
