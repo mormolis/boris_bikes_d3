@@ -2,6 +2,15 @@ require "docking_station"
 
 describe DockingStation do
 
+  # # it "is instantiated with a capacity" do
+  #   # expect(subject).to respond_to(:initialize).with(1).argument
+  #   expect(DockingStation).to receive(:initialize).with(1)
+  # end
+
+    it 'has a default capacity' do
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+
   describe "#release_bike" do
     context "given the method 'release bike'"
       it 'responds to the method "release_bike"' do
