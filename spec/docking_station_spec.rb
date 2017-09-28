@@ -34,7 +34,7 @@ describe DockingStation do
     end
 
     it "the dock method should return the bikes array if successful" do
-      expect(subject.dock(Bike.new)).to be_instance_of Bike
+      expect(subject.dock(Bike.new)).to be_instance_of Array
     end
 
     it "raises an exception when you try to dock more bikes than the capacity of docking station" do
